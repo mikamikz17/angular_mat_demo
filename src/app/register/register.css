@@ -1,0 +1,102 @@
+/* Container */
+.form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 35px;
+  background: #fff0f5; /* Lavender blush */
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.3); /* soft pink shadow */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Headings */
+h2 {
+  text-align: center;
+  color: #d6336c; /* hot pink */
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Full width for Material fields */
+.full-width {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+/* Section labels (like Gender, Skill Level) */
+.section-label {
+  font-weight: 600;
+  color: #d6336c;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+/* Material error messages */
+.error {
+  color: #e83e8c; /* pinkish red */
+  font-size: 13px;
+  margin-top: 3px;
+  margin-bottom: 8px;
+}
+
+/* Slider label styling */
+.mat-slider-horizontal {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Submit button */
+button.mat-raised-button {
+  width: 100%;
+  background-color: #ff69b4; /* hot pink */
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 15px;
+  transition: 0.3s ease;
+}
+
+button.mat-raised-button:hover {
+  background-color: #ff85c1; /* lighter pink */
+  transform: translateY(-2px);
+}
+
+/* Display submitted data */
+.result {
+  margin-top: 30px;
+  padding: 20px;
+  background: #ffe4f0; /* soft pastel pink */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.3);
+}
+
+/* Checkbox & select styling */
+.mat-checkbox-label {
+  color: #d6336c;
+  font-weight: 500;
+}
+
+.mat-select-value-text {
+  color: #d6336c;
+}
+
+/* Material icons color */
+.mat-icon {
+  color: #ff69b4;
+}
+
+/* Textarea */
+textarea.mat-input-element {
+  min-height: 60px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 25px;
+    margin: 30px 10px;
+  }
+}

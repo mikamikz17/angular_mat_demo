@@ -1,0 +1,118 @@
+<div class="form-container">
+  <h2>User Registration Form</h2>
+
+  <form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+
+    <!-- Username with Icon -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Username</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input matInput formControlName="userName">
+      <mat-error *ngIf="formdata.get('userName')?.invalid">
+        Username is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      <mat-error *ngIf="formdata.get('email')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="formdata.get('email')?.hasError('email')">
+        Invalid email format
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Password -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="formdata.get('password')?.hasError('required')">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="formdata.get('password')?.hasError('minlength')">
+        Minimum 8 characters required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Gender -->
+    <label class="section-label">Gender:</label>
+    <mat-radio-group formControlName="gender">
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+    </mat-radio-group>
+    <div class="error" *ngIf="formdata.get('gender')?.invalid && submitted">
+      Gender is required
+    </div>
+
+    <!-- Address -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Address</mat-label>
+      <textarea matInput formControlName="address"></textarea>
+    </mat-form-field>
+
+    <!-- Birth Date -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Birth Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="birthDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="formdata.get('birthDate')?.invalid">
+        Birth date is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Angular Skill Level -->
+    <label class="section-label">
+      Angular Skill Level: {{ formdata.get('angularSkillLevel')?.value }}
+    </label>
+    <mat-slider
+      [min]="minSkillLevel"
+      [max]="maxSkillLevel"
+      step="1">
+      <input matSliderThumb formControlName="angularSkillLevel">
+    </mat-slider>
+
+    <!-- Country Dropdown -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Country</mat-label>
+      <mat-select formControlName="country">
+        <mat-option *ngFor="let c of countries" [value]="c">
+          {{ c }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formdata.get('country')?.invalid">
+        Country is required
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Terms & Conditions -->
+    <mat-checkbox formControlName="termsAccepted">
+      I accept the Terms & Conditions
+    </mat-checkbox>
+    <div class="error" *ngIf="formdata.get('termsAccepted')?.invalid && submitted">
+      You must accept the terms
+    </div>
+
+    <br><br>
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit">
+      Register
+    </button>
+  </form>
+
+  <!-- Display Submitted Data -->
+  <div *ngIf="submitted && formdata.valid" class="result">
+    <h3>Submitted Information:</h3>
+    <p><strong>Username:</strong> {{ userName }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Gender:</strong> {{ gender }}</p>
+    <p><strong>Birth Date:</strong> {{ birthDate | date }}</p>
+    <p><strong>Address:</strong> {{ address }}</p>
+    <p><strong>Angular Skill Level:</strong> {{ angularSkillLevel }}</p>
+    <p><strong>Country:</strong> {{ country }}</p>
+    <p><strong>Terms Accepted:</strong> {{ termsAccepted ? 'Yes' : 'No' }}</p>
+  </div>
+</div>

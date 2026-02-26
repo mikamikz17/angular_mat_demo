@@ -1,12 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { RegisterComponent } from './register/register';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [RegisterComponent],
+  template: `<app-register></app-register>`
 })
-export class App {
-  protected readonly title = signal('angular_mat');
-}
+export class AppComponent {}
